@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, DataTypes) => {
-    return queryInterface.createTable('otps', {
+    return queryInterface.createTable('smslogs', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,32 +10,27 @@ module.exports = {
       },
       phone_number: {
         allowNull: false,
-        unique: true,
+        unique : true,
         type: DataTypes.STRING
       },
-      message_data : {
+      otp: {
         allowNull: false,
-        type :DataTypes.STRING
+        type: DataTypes.STRING
       },
-      message_status : {
-        allowNull: false,
-        type : DataTypes.STRING
+      otp_status: {
+        type: DataTypes.STRING
       },
-    /*  date_time: {
-        allowNull: false,
-        type: DataTypes.DATE
-      },*/
       createdAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: Sequelize.DATE
       }
     });
   },
   down: (queryInterface, DataTypes) => {
-    return queryInterface.dropTable('otps');
+    return queryInterface.dropTable('smslogs');
   }
 };

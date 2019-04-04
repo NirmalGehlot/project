@@ -7,12 +7,11 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:*/
-      return queryInterface.bulkInsert('otps', [{
-        phone_number: '919632723045' ,
-        message_data: 'FedRamp: Your OTP is:'+ 000000+'. no reply' ,
-        message_status : 'delivered',
-        //date_time: new Date()
-        createdAt: new Date(),
+      return queryInterface.bulkInsert('smslogs', [{
+        phone_number : '919632723045',
+        otp : '002525',
+        otp_status: ' ',
+        createdAt : new Date(),
         updatedAt: new Date()
       }], {});
 
@@ -24,7 +23,7 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:*/
-      return queryInterface.bulkDelete('otps', null, {});
+      return queryInterface.bulkDelete('smslogs', null, {});
 
   }
 };

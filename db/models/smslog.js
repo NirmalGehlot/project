@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const otp = sequelize.define('otp', {
+  const smslog = sequelize.define('smslog', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -9,20 +9,19 @@ module.exports = (sequelize, DataTypes) => {
     },
     phone_number: {
       allowNull: false,
-      unique: true,
+      unique : true,
       type: DataTypes.STRING
     },
-    message_data : {
+    otp: {
       allowNull: false,
-      type :DataTypes.STRING
+      type: DataTypes.STRING
     },
-    message_status : {
-      allowNull: false,
-      type : DataTypes.STRING
+    otp_status: {
+      type: DataTypes.STRING
     }
   }, {});
-  otp.associate = function(models) {
+  smslog.associate = function(models) {
     // associations can be defined here
   };
-  return otp;
+  return smslog;
 };
