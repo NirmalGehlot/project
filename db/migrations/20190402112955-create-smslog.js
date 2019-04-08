@@ -8,25 +8,29 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      phone_number: {
+      user_id : {
         allowNull: false,
-        unique : true,
+        //unique: true,
         type: DataTypes.STRING
       },
-      otp: {
+      message_data : {
         allowNull: false,
-        type: DataTypes.STRING
+        type :DataTypes.STRING
       },
-      otp_status: {
-        type: DataTypes.STRING
+      message_status : {
+        allowNull: false,
+        type : DataTypes.STRING
+      },
+      req_type :{
+        type :DataTypes.STRING
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       }
     });
   },

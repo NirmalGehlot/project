@@ -7,13 +7,14 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:*/
-
-      return queryInterface.bulkInsert('otps', [{
-        user_id : '1',
-        otp : '252525',
+      return queryInterface.bulkInsert('users', [{
+        firstName: 'xyz',
+        lastName: 'abc',
+        email: 'nirmal.gehlot@cognitiveclouds.com',
+        password: '1234',
+        phone_number: '919632723045',
         createdAt : new Date(),
         updatedAt: new Date()
-
       }], {});
 
   },
@@ -24,7 +25,7 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:*/
-      return queryInterface.bulkDelete('otps', null, {});
+      return queryInterface.bulkDelete('users', null, {});
 
   }
 };

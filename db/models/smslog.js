@@ -7,17 +7,25 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    phone_number: {
+    user_id: {
+      references: {
+            model: 'user',
+            key: 'id'
+          },
       allowNull: false,
-      unique : true,
-      type: DataTypes.STRING
+      //unique: true,
+      type: DataTypes.INTEGER
     },
-    otp: {
+    message_data : {
       allowNull: false,
-      type: DataTypes.STRING
+      type :DataTypes.STRING
     },
-    otp_status: {
-      type: DataTypes.STRING
+    message_status : {
+      allowNull: false,
+      type : DataTypes.STRING
+    },
+    req_type : {
+      type:DataTypes.STRING
     }
   }, {});
   smslog.associate = function(models) {

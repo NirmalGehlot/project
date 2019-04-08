@@ -8,10 +8,11 @@ module.exports = {
 
       Example:*/
       return queryInterface.bulkInsert('smslogs', [{
-        phone_number : '919632723045',
-        otp : '002525',
-        otp_status: ' ',
-        createdAt : new Date(),
+        user_id: '1' ,
+        message_data: 'FedRamp: Your OTP is:'+ 502552+'. no reply' ,
+        message_status : 'delivered',
+        req_type:'',
+        createdAt: new Date(),
         updatedAt: new Date()
       }], {});
 

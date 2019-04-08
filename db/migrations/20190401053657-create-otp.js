@@ -8,23 +8,18 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      phone_number: {
-        allowNull: false,
-        unique: true,
-        type: DataTypes.STRING
-      },
-      message_data : {
-        allowNull: false,
-        type :DataTypes.STRING
-      },
-      message_status : {
-        allowNull: false,
-        type : DataTypes.STRING
-      },
-    /*  date_time: {
-        allowNull: false,
-        type: DataTypes.DATE
-      },*/
+      user_id: {
+         allowNull: false,
+         //unique : true,
+         type: DataTypes.STRING
+       },
+       otp: {
+         allowNull: false,
+         type: DataTypes.STRING
+       },
+       /*otp_status: {
+         type: DataTypes.STRING
+       },*/
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE

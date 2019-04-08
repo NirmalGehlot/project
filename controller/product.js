@@ -1,9 +1,9 @@
-const sms = require('./sms');
+
 const models = require(__dirname+'/../db/models')
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
-const  otp_val= require('./otp-validate')
+
 
 module.exports.product = () =>{
 
@@ -13,19 +13,37 @@ urlencoded = bodyParser.urlencoded({ extended: false });
 
 var app = express();
 
-app.post('/api/sendsms',urlencoded,(req,res) =>{
+app.post('/api/otp',urlencoded,(req,res) =>{
+
+  global.user_id = req.body.userid;
+  res.writeHead(200,{'Content-Type' : 'application/json'});
+  if(req.body.type == 'sms')
+  {
+  const sms = require('./sms');
 
   console.log(req.body);
-  global.phone_number=req.body.to
-  sms.sms(req.body.to);
-  res.end('sms sent');
+  sms.sms(req.body.userid,req,res);
+  //res.end('otp sent to phone number');
+}
+else if(req.body.type == 'email'){
+  const email = require('./otp-email');
 
+  console.log(req.body);
+  email.otp_email(req.body.userid,req,res)
+//  res.end("otp sent to email");
+}
 });
 
-app.post('/api/validate-otp',urlencoded, (req,res) => {
+
+
+
+app.post('/api/otp-validate',urlencoded,(req,res) => {
+
+  const  otp_val= require('./otp-validate');
+  res.writeHead(200,{'Content-Type' : 'application/json'});
   console.log(req.body);
-  otp_val.otp_validate(phone_number,req.body.otp)
-res.end("otp sent")
+  response = otp_val.otp_validate(1,req.body.otp,req,res);
+//  res.end("otp validate request"+response);
 });
 
 http.createServer(app).listen(3000,()=>{

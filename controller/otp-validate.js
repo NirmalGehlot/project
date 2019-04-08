@@ -1,26 +1,31 @@
 const models = require(__dirname+'/../db/models')
 
-module.exports.otp_validate = (phone_number,otp) =>{
-models.smslog
-.findOne({where:{phone_number : phone_number}})
-.then((foundItem)=>{
-  //console.log(foundItem.otp);
-  if(foundItem.otp.toString() == otp){
+module.exports.otp_validate = (user_id,otp,req,res) =>{
 
-    return models.smslog
-        .update({otp_status:"VALID"}, {where: {phone_number : phone_number}})
-        .then((user)=>{
-          console.log(user);
-          console.log('otp valid');
-        }) ;
-  }
-  else{
-    return models.smslog
-        .update({otp_status:"INVALID"}, {where: {phone_number : phone_number}})
-        .then((user)=>{
-          console.log(user);
-          console.log('otp invalid');
-  });
-}
-});
+      models.otp
+      .findOne({where:{user_id : user_id}})
+      .then((foundItem)=>{
+          //console.log(foundItem.otp);
+          if(foundItem.otp == otp){
+          console.log('valid otp');
+          //return 'valid otp';
+          let myobj = {
+            status : 'valid'
+          }
+          res.end(JSON.stringify(myobj));
+           
+        }
+        else{
+          console.log('Invalid otp');
+        //  return 'Invalid otp';
+          let myobj = {
+            status : 'invalid'
+          }
+          res.end(JSON.stringify(myobj));
+
+        }
+
+    });
+
+
 }
