@@ -7,7 +7,7 @@ module.exports.otp_email = (user_id,req,res) =>{
 console.log('lets start');
 
 
-sgMail.setApiKey('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');
+sgMail.setApiKey(APIkey);
 let otpgen = otp.otp();
 let body =  'Your OTP is: '+otpgen+'. Please use it to login';
 

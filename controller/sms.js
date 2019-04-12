@@ -4,8 +4,8 @@ module.exports.sms = function(user_id,req,res){
 
 const otp = require('./otp-gen');
 var status;
-const accountSid = 'ACcd84dd93c12b393b2db0abc8b22f6273';
-const authToken = 'e4107082085e7f8ebc9f7b3ce2b0838f';
+const accountSid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+const authToken = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
 const client = require('twilio')(accountSid, authToken);
 
 otpgen = otp.otp();
@@ -44,7 +44,7 @@ const body = 'FedRamp: Your OTP is:'+ otpgen +'. no reply';
         status : 'delivered'
       }
       res.end(JSON.stringify(myobj));
-       
+
 
     setTimeout(()=>{
       const deletes = require('./delete-otp');
